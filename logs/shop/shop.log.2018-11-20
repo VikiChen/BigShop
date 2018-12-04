@@ -1,0 +1,48 @@
+2018-11-20 16:58:36,456 [http-bio-9101-exec-1-SendThread(10.101.12.77:2181)] WARN  [org.apache.zookeeper.ClientCnxnSocket] - Connected to an old server; r-o mode will be unavailable
+2018-11-20 17:06:03,254 [http-bio-9101-exec-1-SendThread(10.101.12.77:2181)] WARN  [org.apache.zookeeper.ClientCnxnSocket] - Connected to an old server; r-o mode will be unavailable
+2018-11-20 17:07:24,388 [http-bio-9101-exec-1-SendThread(10.101.12.77:2181)] WARN  [org.apache.zookeeper.ClientCnxnSocket] - Connected to an old server; r-o mode will be unavailable
+2018-11-20 17:08:52,733 [http-bio-9101-exec-1-SendThread(10.101.12.77:2181)] WARN  [org.apache.zookeeper.ClientCnxnSocket] - Connected to an old server; r-o mode will be unavailable
+2018-11-20 17:15:02,620 [http-bio-9101-exec-1-SendThread(10.101.12.77:2181)] WARN  [org.apache.zookeeper.ClientCnxnSocket] - Connected to an old server; r-o mode will be unavailable
+2018-11-20 17:17:20,232 [DubboClientReconnectTimer-thread-2] WARN  [com.alibaba.dubbo.remoting.transport.AbstractClient] -  [DUBBO] client reconnect to 10.101.8.163:20881 find error . url: dubbo://10.101.8.163:20881/com.shop.sellergoods.service.BrandService?anyhost=true&application=shop-manager-web&check=false&codec=dubbo&dubbo=2.8.4&generic=false&heartbeat=60000&interface=com.shop.sellergoods.service.BrandService&methods=findAll&pid=5312&revision=1.0-SNAPSHOT&side=consumer&timestamp=1542705302464, dubbo version: 2.8.4, current host: 192.168.56.1
+com.alibaba.dubbo.remoting.RemotingException: client(url: dubbo://10.101.8.163:20881/com.shop.sellergoods.service.BrandService?anyhost=true&application=shop-manager-web&check=false&codec=dubbo&dubbo=2.8.4&generic=false&heartbeat=60000&interface=com.shop.sellergoods.service.BrandService&methods=findAll&pid=5312&revision=1.0-SNAPSHOT&side=consumer&timestamp=1542705302464) failed to connect to server /10.101.8.163:20881, error message is:Connection refused: no further information: /10.101.8.163:20881
+	at com.alibaba.dubbo.remoting.transport.netty.NettyClient.doConnect(NettyClient.java:141)
+	at com.alibaba.dubbo.remoting.transport.AbstractClient.connect(AbstractClient.java:280)
+	at com.alibaba.dubbo.remoting.transport.AbstractClient$1.run(AbstractClient.java:145)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection refused: no further information: /10.101.8.163:20881
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.connect(NioClientBoss.java:150)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.processSelectedKeys(NioClientBoss.java:105)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.process(NioClientBoss.java:79)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:312)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.run(NioClientBoss.java:42)
+	... 3 more
+2018-11-20 17:19:29,246 [DubboClientReconnectTimer-thread-1] WARN  [com.alibaba.dubbo.remoting.transport.AbstractClient] -  [DUBBO] client reconnect to 10.101.8.163:20881 find error . url: dubbo://10.101.8.163:20881/com.shop.sellergoods.service.BrandService?anyhost=true&application=shop-manager-web&check=false&codec=dubbo&dubbo=2.8.4&generic=false&heartbeat=60000&interface=com.shop.sellergoods.service.BrandService&methods=findAll&pid=5312&revision=1.0-SNAPSHOT&side=consumer&timestamp=1542705302464, dubbo version: 2.8.4, current host: 192.168.56.1
+com.alibaba.dubbo.remoting.RemotingException: client(url: dubbo://10.101.8.163:20881/com.shop.sellergoods.service.BrandService?anyhost=true&application=shop-manager-web&check=false&codec=dubbo&dubbo=2.8.4&generic=false&heartbeat=60000&interface=com.shop.sellergoods.service.BrandService&methods=findAll&pid=5312&revision=1.0-SNAPSHOT&side=consumer&timestamp=1542705302464) failed to connect to server /10.101.8.163:20881, error message is:Connection refused: no further information: /10.101.8.163:20881
+	at com.alibaba.dubbo.remoting.transport.netty.NettyClient.doConnect(NettyClient.java:141)
+	at com.alibaba.dubbo.remoting.transport.AbstractClient.connect(AbstractClient.java:280)
+	at com.alibaba.dubbo.remoting.transport.AbstractClient$1.run(AbstractClient.java:145)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection refused: no further information: /10.101.8.163:20881
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.connect(NioClientBoss.java:150)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.processSelectedKeys(NioClientBoss.java:105)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.process(NioClientBoss.java:79)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:312)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.run(NioClientBoss.java:42)
+	... 3 more
+2018-11-20 17:26:01,780 [http-bio-9101-exec-1-SendThread(10.101.12.77:2181)] WARN  [org.apache.zookeeper.ClientCnxnSocket] - Connected to an old server; r-o mode will be unavailable

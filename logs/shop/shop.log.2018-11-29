@@ -1,0 +1,1 @@
+2018-11-29 14:41:15,027 [http-bio-9101-exec-4-SendThread(10.101.12.77:2181)] WARN  [org.apache.zookeeper.ClientCnxnSocket] - Connected to an old server; r-o mode will be unavailable
