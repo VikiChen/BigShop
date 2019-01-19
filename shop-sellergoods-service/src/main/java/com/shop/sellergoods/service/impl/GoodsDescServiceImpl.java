@@ -10,6 +10,7 @@ import com.github.pagehelper.PageHelper;
 import com.shop.mapper.TbGoodsDescMapper;
 import com.shop.pojo.TbGoodsDesc;
 import com.shop.sellergoods.service.GoodsDescService;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 服务实现层
@@ -17,6 +18,7 @@ import com.shop.sellergoods.service.GoodsDescService;
  *
  */
 @Service
+@Transactional
 public class GoodsDescServiceImpl implements GoodsDescService {
 
 	@Autowired

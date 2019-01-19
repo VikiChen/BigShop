@@ -16,6 +16,7 @@ import com.shop.pojo.TbSpecification;
 import com.shop.pojo.TbSpecificationExample;
 import com.shop.pojo.TbSpecificationExample.Criteria;
 import com.shop.sellergoods.service.SpecificationService;
+import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -24,6 +25,7 @@ import com.shop.sellergoods.service.SpecificationService;
  *
  */
 @Service
+@Transactional
 public class SpecificationServiceImpl implements SpecificationService {
 
 	@Autowired

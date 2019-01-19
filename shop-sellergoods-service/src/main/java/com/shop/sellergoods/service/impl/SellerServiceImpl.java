@@ -12,6 +12,7 @@ import com.shop.pojo.TbSeller;
 import com.shop.pojo.TbSellerExample;
 import com.shop.pojo.TbSellerExample.Criteria;
 import com.shop.sellergoods.service.SellerService;
+import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -68,6 +69,7 @@ public class SellerServiceImpl implements SellerService {
 	 * @return
 	 */
 	@Override
+	@Transactional
 	public TbSeller findOne(String id){
 		return sellerMapper.selectByPrimaryKey(id);
 	}
