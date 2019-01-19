@@ -1,15 +1,14 @@
-package com.shop.manager.controller;
+package com.shop.mall.controller;
 import java.util.List;
 
 import com.shop.entity.PageResult;
 import com.shop.entity.Result;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import com.shop.pojo.TbItemCat;
+import com.shop.sellergoods.service.ItemCatService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.shop.pojo.TbSeller;
-import com.shop.sellergoods.service.SellerService;
 
 /**
  * controller
@@ -17,19 +16,19 @@ import com.shop.sellergoods.service.SellerService;
  *
  */
 @RestController
-@RequestMapping("/seller")
-public class SellerController {
+@RequestMapping("/itemCat")
+public class ItemCatController {
 
 	@Reference
-	private SellerService sellerService;
+	private ItemCatService itemCatService;
 	
 	/**
 	 * 返回全部列表
 	 * @return
 	 */
 	@RequestMapping("/findAll")
-	public List<TbSeller> findAll(){			
-		return sellerService.findAll();
+	public List<TbItemCat> findAll(){
+		return itemCatService.findAll();
 	}
 	
 	
@@ -39,22 +38,18 @@ public class SellerController {
 	 */
 	@RequestMapping("/findPage")
 	public PageResult findPage(int page, int rows){
-		return sellerService.findPage(page, rows);
+		return itemCatService.findPage(page, rows);
 	}
 	
 	/**
 	 * 增加
-	 * @param seller
+	 * @param itemCat
 	 * @return
 	 */
 	@RequestMapping("/add")
-	public Result add(@RequestBody TbSeller seller){
-		//密码加密
-		BCryptPasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
-		String password = passwordEncoder.encode(seller.getPassword());//加密
-		seller.setPassword(password);
+	public Result add(@RequestBody TbItemCat itemCat){
 		try {
-			sellerService.add(seller);
+			itemCatService.add(itemCat);
 			return new Result(true, "增加成功");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -64,13 +59,13 @@ public class SellerController {
 	
 	/**
 	 * 修改
-	 * @param seller
+	 * @param itemCat
 	 * @return
 	 */
 	@RequestMapping("/update")
-	public Result update(@RequestBody TbSeller seller){
+	public Result update(@RequestBody TbItemCat itemCat){
 		try {
-			sellerService.update(seller);
+			itemCatService.update(itemCat);
 			return new Result(true, "修改成功");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -84,8 +79,8 @@ public class SellerController {
 	 * @return
 	 */
 	@RequestMapping("/findOne")
-	public TbSeller findOne(String id){
-		return sellerService.findOne(id);		
+	public TbItemCat findOne(Long id){
+		return itemCatService.findOne(id);		
 	}
 	
 	/**
@@ -94,9 +89,9 @@ public class SellerController {
 	 * @return
 	 */
 	@RequestMapping("/delete")
-	public Result delete(String [] ids){
+	public Result delete(Long [] ids){
 		try {
-			sellerService.delete(ids);
+			itemCatService.delete(ids);
 			return new Result(true, "删除成功"); 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -106,26 +101,25 @@ public class SellerController {
 	
 		/**
 	 * 查询+分页
+	 * @param brand
 	 * @param page
 	 * @param rows
 	 * @return
 	 */
 	@RequestMapping("/search")
-	public PageResult search(@RequestBody TbSeller seller, int page, int rows  ){
-		return sellerService.findPage(seller, page, rows);		
+	public PageResult search(@RequestBody TbItemCat itemCat, int page, int rows  ){
+		return itemCatService.findPage(itemCat, page, rows);		
 	}
-
-	@RequestMapping("/updateStatus")
-	public Result updateStatus(String sellerId,String status ){
-		try {
-			sellerService.updateStatus(sellerId, status);
-			return new Result(true,"成功");
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new Result(false,"失败");
-		}
-
+	
+	/**
+	 * 根据上级ID查询商品分类列表
+	 * @param parentId
+	 * @return
+	 */
+	@RequestMapping("/findByParentId")
+	public List<TbItemCat> findByParentId(Long parentId){
+		return itemCatService.findByParentId(parentId);
 	}
-
-
+	
+	
 }

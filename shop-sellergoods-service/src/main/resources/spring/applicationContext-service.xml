@@ -10,7 +10,7 @@
 
 <dubbo:protocol name="dubbo" port="20881"></dubbo:protocol>
 	<dubbo:application name="shop-sellergoods-service"/>
-    <dubbo:registry address="zookeeper://10.101.12.77:2181"/>
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
     <dubbo:annotation package="com.shop.sellergoods.service.impl" />
    
    

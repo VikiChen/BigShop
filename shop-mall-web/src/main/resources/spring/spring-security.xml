@@ -42,7 +42,7 @@
 	
 	<!-- 引用dubbo 服务 -->
 	<dubbo:application name="shop-mall-web" />
-	<dubbo:registry address="zookeeper://10.101.12.77:2181"/>
+	<dubbo:registry address="zookeeper://127.0.0.1:2181"/>
 	<dubbo:reference id="sellerService" interface="com.shop.sellergoods.service.SellerService"></dubbo:reference>
 	
 	

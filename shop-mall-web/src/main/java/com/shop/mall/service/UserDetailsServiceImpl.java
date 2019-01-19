@@ -33,7 +33,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		//构建角色列表
 		List<GrantedAuthority> grantAuths=new ArrayList();
 		grantAuths.add(new SimpleGrantedAuthority("ROLE_SELLER"));
-		
+		System.out.println(username);
 		//得到商家对象
 		TbSeller seller = sellerService.findOne(username);
 		if(seller!=null){

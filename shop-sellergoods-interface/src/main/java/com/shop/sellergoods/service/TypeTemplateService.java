@@ -1,9 +1,10 @@
 package com.shop.sellergoods.service;
+import com.shop.entity.PageResult;
+import com.shop.pojo.TbTypeTemplate;
+
 import java.util.List;
 import java.util.Map;
 
-import com.shop.entity.PageResult;
-import com.shop.pojo.TbTypeTemplate;
 
 /**
  * 服务层接口
@@ -59,6 +60,8 @@ public interface TypeTemplateService {
 	 * @return
 	 */
 	public PageResult findPage(TbTypeTemplate typeTemplate, int pageNum, int pageSize);
+	
 
-
+	public List<Map> findSpecList(Long id);
+	
 }
