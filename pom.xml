@@ -18,6 +18,10 @@
         <module>shop-content-interface</module>
         <module>shop-content-service</module>
         <module>shop-portal-web</module>
+        <module>shop-solr-util</module>
+        <module>shop-search-interface</module>
+        <module>shop-search-service</module>
+        <module>shop-search-web</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->
