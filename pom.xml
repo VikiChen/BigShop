@@ -22,6 +22,9 @@
         <module>shop-search-interface</module>
         <module>shop-search-service</module>
         <module>shop-search-web</module>
+        <module>shop-user-interface</module>
+        <module>shop-user-service</module>
+        <module>shop-user-web</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->
