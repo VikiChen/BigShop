@@ -3,6 +3,8 @@ import java.util.List;
 
 import com.shop.entity.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -11,7 +13,7 @@ import com.shop.pojo.TbItemCat;
 import com.shop.pojo.TbItemCatExample;
 import com.shop.pojo.TbItemCatExample.Criteria;
 import com.shop.sellergoods.service.ItemCatService;
-import org.springframework.transaction.annotation.Transactional;
+
 
 
 /**
@@ -20,7 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
  *
  */
 @Service
-@Transactional
 public class ItemCatServiceImpl implements ItemCatService {
 
 	@Autowired
@@ -99,14 +100,27 @@ public class ItemCatServiceImpl implements ItemCatService {
 		Page<TbItemCat> page= (Page<TbItemCat>)itemCatMapper.selectByExample(example);		
 		return new PageResult(page.getTotal(), page.getResult());
 	}
+		
+	@Autowired
+	private RedisTemplate redisTemplate;
 
 	@Override
 	public List<TbItemCat> findByParentId(Long parentId) {
-		TbItemCatExample example =new TbItemCatExample();
-		Criteria criteria =example.createCriteria();
+		TbItemCatExample example = new TbItemCatExample();
+		Criteria criteria = example.createCriteria();
+		// 设置条件:
 		criteria.andParentIdEqualTo(parentId);
-		List<TbItemCat> tbItemCats = itemCatMapper.selectByExample(example);
-		return tbItemCats;
+		// 条件查询
+		
+		//将模板ID放入缓存（以商品分类名称作为key）	
+		
+		List<TbItemCat> itemCatList = findAll();
+		for(TbItemCat itemCat:itemCatList){
+			redisTemplate.boundHashOps("itemCat").put(itemCat.getName(), itemCat.getTypeId());
+		}
+		System.out.println("将模板ID放入缓存");
+		
+		return itemCatMapper.selectByExample(example);
 	}
-
+	
 }
